@@ -87,7 +87,7 @@ if [[ ! -d "$dir" ]]; then
   exit 1
 fi
 
-mapfile -d $'\0' images < <(find "$dir/" -maxdepth 1 -type f -name "*.$extension" -print0)
+mapfile -d $'\0' images < <(find "$dir/" -maxdepth 1 -type f -name "*.$extension" -print0 | sort -z -V)
 totalFrames="${#images[@]}"
 echo "Total frames: $totalFrames"
 
